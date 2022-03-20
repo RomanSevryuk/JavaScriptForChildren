@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Изучаем DOM_exercise_1</title>
+ 
+</head>
+<body>
+ <h1 id="main-heading">Привет, мир!</h1>
+ <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+ <script>
+     
+let myFriends = ["Sergey", "Dmitrii", "Evgeniy"];
+for (let i = 0; i < myFriends.length; i++) {
+$("body").append("<p>" + myFriends[i] + "</p>");
+}
+
+$("#main-heading").text("Мои друзья");
+$("p").hide().fadeIn(3000);
+$("p").append("<p>" + " лучший" + "</p>")
+
+/*for (let j = 0; j < 5; j++) {
+    $("h1").fadeOut(1000 * j).fadeIn(1000 * j);
+}
+
+$("p").fadeOut(3000).delay(5000).fadeIn(3000);*/
+
+$("h1").fadeTo(3000, 0.2);
+
+ </script>
+</body>
+</html>
