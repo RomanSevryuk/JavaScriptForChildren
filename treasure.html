@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Найди клад!</title>
+</head>
+<body>
+ <h1 id="heading">Найди клад!</h1>
+<img id="map" width=800 height=800 src="http://nostarch.com/images/treasuremap.png">
+<p id="distance"></p>
+ <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+ <script>
+ // Здесь будет код игры
+    let getRandomNumber = function (size) {
+        return Math.floor(Math.random() * size);
+    };
+    
+    let getDistance = function (event, target) {
+        let diffX = event.offsetX - target.x;
+        let diffY = event.offsetY - target.y;
+        return Math.sqrt((diffX * diffX) + (diffY * diffY));
+    }
+
+    let getDistanceHint = function (distance) {
+        if (distance < 10) {
+            return "Обожжешься! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance < 20) {
+            return "Очень горячо! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance < 40) {
+            return "Горячо! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance < 80) {
+            return "Тепло! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance  < 160) {
+            return "Холодно! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance < 320) {
+            return "Очень холодно! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else if (distance < 640) {
+            return "Очень, очень холодно! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        } else {
+            return "Замерзнешь! " + "Осталось: " +(clickInput - clicks) + " кликов!";
+        }
+    };
+
+    let width = 800;
+    let height = 800;
+    let clicks = 0;
+    let clickInput = prompt("Введите количество кликов:");
+
+    let target = {
+        x: getRandomNumber(width),
+        y: getRandomNumber(height)
+    };
+
+    $("#map").click(function (event) {
+        // coude obrabotchika
+        clicks ++;
+        let distance = getDistance(event, target);
+        let distanceHint = getDistanceHint(distance);
+        $("#distance").text(distanceHint);
+        if (distance < 8) {
+            alert("Клад найден! Сделано кликов: " + clicks);
+        } else if (clicks >= clickInput) {
+            alert("КОНЕЦ ИГРЫ: " + clicks);
+        }
+    });
+
+ </script>
+</body>
+</html>
