@@ -35,13 +35,44 @@
             });
         };
 
+        Car.prototype.moveLeft = function (distance) {
+            this.x -= distance;
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        }
+
+        Car.prototype.moveUp = function (distance) {
+            this.x -= distance;
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        }
+
+        Car.prototype.moveDown = function (distance) {
+            this.x += distance;
+            this.carElement.css({
+                left: this.x,
+                top: this.y
+            });
+        }
+
         let tesla = new Car (20, 20);
         let nissan = new Car (100, 200);
         
         setInterval(function () {
-            //tesla.moveRight(Math.random() * 5);
+            tesla.moveRight(Math.random() * 5);
             nissan.moveRight(Math.random() * 5);
-        }, 10);
+//          tesla.moveLeft(Math.random() * 5);
+//          nissan.moveLeft(Math.random() * 5);
+//            tesla.moveUp(Math.random() * 5);
+//            nissan.moveUp(Math.random() * 5);
+//            tesla.moveDown(Math.random() * 5);
+//            nissan.moveDown(Math.random() * 5);
+
+        }, 30);
          
     </script>
 </body>

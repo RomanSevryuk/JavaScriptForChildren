@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas</title>
+    </head>
+
+    <body>
+        <canvas id = "canvas" width="200" height="200"></canvas>
+
+        <script>
+            let canvas = document.getElementById("canvas");
+            let ctx = canvas.getContext("2d");
+            for (let i = 0; i < 8; i++) {
+                ctx.fillRect(i * 10, i * 10, 10, 10);
+            }
+        </script>
+    </body>
+</html>
